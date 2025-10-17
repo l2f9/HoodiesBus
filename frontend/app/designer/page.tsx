@@ -102,6 +102,8 @@ export default function DesignerPage() {
               <div className="aspect-square w-full relative">
                 <HoodieCanvas
                   color={hoodieColor}
+                  hoodieType={hoodieType}
+                  fabric={fabric}
                   frontPrint={frontText}
                   editMode={editMode}
                 />

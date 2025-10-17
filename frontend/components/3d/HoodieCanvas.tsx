@@ -9,7 +9,8 @@ import HoodieModel from './HoodieModel';
 
 interface HoodieCanvasProps {
   color?: string;
-  texture?: string;
+  hoodieType?: 'pullover' | 'zip-up' | 'oversized' | 'cropped' | 'athletic';
+  fabric?: 'cotton' | 'fleece' | 'french-terry' | 'polyester';
   frontPrint?: string;
   backPrint?: string;
   onModelLoad?: () => void;
@@ -18,7 +19,8 @@ interface HoodieCanvasProps {
 
 export default function HoodieCanvas({
   color = '#ffffff',
-  texture,
+  hoodieType = 'pullover',
+  fabric = 'cotton',
   frontPrint,
   backPrint,
   onModelLoad,
@@ -77,7 +79,8 @@ export default function HoodieCanvas({
           {/* 3D Hoodie Model */}
           <HoodieModel
             color={color}
-            texture={texture}
+            hoodieType={hoodieType}
+            fabric={fabric}
             frontPrint={frontPrint}
             backPrint={backPrint}
             onLoad={onModelLoad}

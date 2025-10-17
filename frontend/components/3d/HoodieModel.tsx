@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
-import OversizedHoodieMockup from './OversizedHoodieMockup';
+import BaseMeshHoodie from './BaseMeshHoodie';
 
 interface HoodieModelProps {
   color?: string;
-  texture?: string;
+  hoodieType?: 'pullover' | 'zip-up' | 'oversized' | 'cropped' | 'athletic';
+  fabric?: 'cotton' | 'fleece' | 'french-terry' | 'polyester';
   frontPrint?: string;
   backPrint?: string;
   onLoad?: () => void;
@@ -16,24 +15,14 @@ interface HoodieModelProps {
 
 export default function HoodieModel({
   color = '#ffffff',
-  texture,
+  hoodieType = 'pullover',
+  fabric = 'cotton',
   frontPrint,
   backPrint,
   onLoad,
   editMode = true,
 }: HoodieModelProps) {
   const [modelLoaded, setModelLoaded] = useState(false);
-
-  // Try to load the real model, fallback to mockup
-  let scene: any = null;
-  let error = false;
-
-  try {
-    const gltf = useGLTF('/models/hoodie.glb');
-    scene = gltf.scene;
-  } catch (e) {
-    error = true;
-  }
 
   useEffect(() => {
     if (!modelLoaded) {
@@ -42,41 +31,14 @@ export default function HoodieModel({
     }
   }, [modelLoaded, onLoad]);
 
-  // If real GLB model exists, use it
-  if (scene && !error) {
-    scene.traverse((child: any) => {
-      if (child.isMesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
-        if (child.material && !editMode) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: new THREE.Color(color),
-            roughness: 0.7,
-            metalness: 0.1,
-          });
-        }
-      }
-    });
-
-    return (
-      <group scale={1.5}>
-        <primitive object={scene.clone()} />
-      </group>
-    );
-  }
-
-  // Use oversized hoodie mockup
+  // Use professional base mesh system
   return (
-    <OversizedHoodieMockup
+    <BaseMeshHoodie
+      type={hoodieType}
       color={color}
+      fabric={fabric}
+      frontText={frontPrint}
       editMode={editMode}
-      designs={{
-        front: frontPrint,
-        back: backPrint,
-      }}
     />
   );
 }
-
-// Preload the model
-useGLTF.preload('/models/hoodie.glb');

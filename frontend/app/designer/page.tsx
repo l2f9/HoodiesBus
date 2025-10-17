@@ -197,7 +197,7 @@ export default function DesignerPage() {
               </h3>
               <select
                 value={fabric}
-                onChange={(e) => setFabric(e.target.value)}
+                onChange={(e) => setFabric(e.target.value as 'cotton' | 'fleece' | 'french-terry' | 'polyester')}
                 className="w-full px-4 py-3 glass border border-white/30 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 transition-all text-white font-semibold cursor-pointer"
               >
                 {fabrics.map((f) => (

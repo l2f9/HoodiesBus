@@ -124,7 +124,7 @@ export default function HoodieCanvas({
                 radius={0.1}
                 intensity={40}
                 luminanceInfluence={0.6}
-                color="black"
+                color={new THREE.Color('black')}
               />
 
               {/* Depth of Field - Camera lens blur for photography look */}

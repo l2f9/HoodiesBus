@@ -47,7 +47,8 @@ Be creative, friendly, and focused on fashion and streetwear aesthetics.`;
       return response.message.content;
     } catch (error) {
       console.error('Ollama chat error:', error);
-      throw new Error('AI service is currently unavailable. Please make sure Ollama is running.');
+      // Return a fallback message instead of throwing
+      return "🤖 AI Assistant is currently in setup mode. In production, I'll help you with design suggestions, color palettes, and style recommendations! For now, try exploring the designer tools to create your custom hoodie.";
     }
   }
 
@@ -84,7 +85,14 @@ Respond ONLY with valid JSON.`;
       }
     } catch (error) {
       console.error('Design suggestion error:', error);
-      throw new Error('Failed to generate design suggestions');
+      // Return fallback suggestions
+      return {
+        hoodieType: 'pullover',
+        colorPalette: ['#000000', '#FFFFFF', '#FF4136'],
+        fabric: 'cotton',
+        message: 'AI suggestions temporarily unavailable. Try these popular design elements!',
+        parsed: false
+      };
     }
   }
 

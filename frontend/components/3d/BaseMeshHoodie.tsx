@@ -319,7 +319,7 @@ export default function BaseMeshHoodie({
         <>
           {/* Zipper Track */}
           <mesh
-            geometry={new THREE.BoxGeometry(0.02, type === 'cropped' ? 0.6 : 0.75, 0.01)}
+            geometry={new THREE.BoxGeometry(0.02, 0.75, 0.01)}
             material={zipperMaterial}
             position={[0, pocketY + 0.15, 0.49]}
           />

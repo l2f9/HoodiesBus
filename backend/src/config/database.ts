@@ -2,7 +2,14 @@ import mongoose from 'mongoose';
 
 export const connectDatabase = async (): Promise<void> => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/hoodiesbus';
+    const mongoURI = process.env.MONGODB_URI;
+
+    // If no MongoDB URI provided, run in database-less mode
+    if (!mongoURI) {
+      console.log('⚠️  MongoDB URI not configured - running without database');
+      console.log('💡 App will work but design saving/gallery features will be unavailable');
+      return;
+    }
 
     await mongoose.connect(mongoURI);
 
@@ -10,7 +17,8 @@ export const connectDatabase = async (): Promise<void> => {
     console.log(`📊 Database: ${mongoose.connection.name}`);
   } catch (error) {
     console.error('❌ MongoDB connection error:', error);
-    process.exit(1);
+    console.log('⚠️  Continuing without database - some features will be unavailable');
+    // Don't exit - continue running without database
   }
 };
 

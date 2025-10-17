@@ -41,18 +41,18 @@ export default function DesignerPage() {
   ];
 
   const hoodieTypes = [
-    { name: 'Pullover', value: 'pullover' },
-    { name: 'Zip-Up', value: 'zip-up' },
-    { name: 'Oversized', value: 'oversized' },
-    { name: 'Cropped', value: 'cropped' },
-    { name: 'Athletic', value: 'athletic' },
+    { name: 'Pullover', value: 'pullover' as const },
+    { name: 'Zip-Up', value: 'zip-up' as const },
+    { name: 'Oversized', value: 'oversized' as const },
+    { name: 'Cropped', value: 'cropped' as const },
+    { name: 'Athletic', value: 'athletic' as const },
   ];
 
   const fabrics = [
-    { name: 'Cotton (Soft & Breathable)', value: 'cotton' },
-    { name: 'Fleece (Warm & Cozy)', value: 'fleece' },
-    { name: 'French Terry (Lightweight)', value: 'french-terry' },
-    { name: 'Polyester Blend (Athletic)', value: 'polyester' },
+    { name: 'Cotton (Soft & Breathable)', value: 'cotton' as const },
+    { name: 'Fleece (Warm & Cozy)', value: 'fleece' as const },
+    { name: 'French Terry (Lightweight)', value: 'french-terry' as const },
+    { name: 'Polyester Blend (Athletic)', value: 'polyester' as const },
   ];
 
   return (

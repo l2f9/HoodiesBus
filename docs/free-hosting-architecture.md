@@ -161,9 +161,9 @@ railway up
 - ✅ Automatic backups
 - ✅ No credit card required
 
-**Already set up!** You're using this:
+**Connection string format:**
 ```
-mongodb+srv://mvvx98:IGYHxZvm5ss7ckEg@hoodiesbus.wgxpear.mongodb.net/
+mongodb+srv://<user>:<password>@<cluster>.mongodb.net/hoodiesbus
 ```
 
 **Capacity**:
@@ -526,9 +526,9 @@ railway variables set COMFYUI_URL=your_ngrok_url
 
 ### Step 3: Setup MongoDB Atlas M0
 
-Already done! You're using:
+Use a connection string of the form:
 ```
-mongodb+srv://mvvx98:IGYHxZvm5ss7ckEg@hoodiesbus.wgxpear.mongodb.net/
+mongodb+srv://<user>:<password>@<cluster>.mongodb.net/hoodiesbus
 ```
 
 ### Step 4: Setup Cloudflare R2

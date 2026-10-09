@@ -1,1 +1,0 @@
-# HoodiesBus - Digital Fashion Platform
